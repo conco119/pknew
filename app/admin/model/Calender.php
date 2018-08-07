@@ -13,22 +13,16 @@ class Calender extends Main
     {
         //add or edit
         //query
-        $sql = "SELECT * FROM categories";
+        $sql = "SELECT * FROM calender";
         $paging = $this->paging->get_content($this->pdo->count_rows($sql), 10);
         $sql .= $paging['sql_add'];
-        $cats = $this->pdo->fetch_all($sql);
-        $cat_add_new = $this->pdo->fetch_all("SELECT * FROM categories WHERE parent_id =0");
-        $cats_loop = $this->pdo->fetch_all("SELECT * from categories");
-        foreach($cats as $key => $cat)
-        {
-            $cats[$key]['name'] = $this->CategoryHelper->help_get_parent_name($cats_loop, $cat, '', 0);
-        }
+        $calenders = $this->pdo->fetch_all($sql);
+
         // smarty
-        // pre($cats);
+        // pre($calenders);
         // return;
         $this->smarty->assign('paging', $paging);
-        $this->smarty->assign('cat_add_new', $cat_add_new);
-        $this->smarty->assign('cats', $cats);
+        $this->smarty->assign('calenders', $calenders);
         $this->smarty->display(DEFAULT_LAYOUT);
     }
     //not using view from here
@@ -37,76 +31,61 @@ class Calender extends Main
     {
         if( isset($_POST['submit']))
         {
-          $data['name'] = $_POST['name'];
-          $data['parent_id'] = $_POST['parent_id'];
-          $data['status'] = 1;
-          $data['created_at'] = time();
-          $isSucceed = $this->pdo->insert('categories', $data);
+          $data['room'] = $this->helper->slash($_POST['room']);
+          $data['thu2'] = $this->helper->slash($_POST['thu2']);
+          $data['thu3'] = $this->helper->slash($_POST['thu3']);
+          $data['thu4'] = $this->helper->slash($_POST['thu4']);
+          $data['thu5'] = $this->helper->slash($_POST['thu5']);
+          $data['thu6'] = $this->helper->slash($_POST['thu6']);
+          $data['thu7'] = $this->helper->slash($_POST['thu7']);
+          $data['cn'] = $this->helper->slash($_POST['cn']);
+          $isSucceed = $this->pdo->insert('calender', $data);
           if($isSucceed)
-            $this->helper->create_notification(1, "Tạo danh mục {$data['name']} thành công");
+            $this->helper->create_notification(1, "Tạo lịch bác sỹ thành công");
           else
-            $this->helper->create_notification(0, "Tạo danh mục {$data['name']} không thành công");
+            $this->helper->create_notification(0, "Tạo lịch bác sỹ không thành công");
           lib_redirect_back();
         }
     }
+
     public function edit()
     {
         if( isset($_POST['submit']) )
         {
-            $data['name'] = $_POST['name'];
-            $data['parent_id'] = $_POST['parent_id'];
-            $data['updated_at'] = time();
-          try {
-              $updateStatement = $this->slim_pdo->update($data)->table($this->table)->where('id', '=', $_POST['id']);
-              $isSucceed = $updateStatement->execute();
-          }
-          catch(PDOException $e) {
-              $text = $e->getMessage();
-              $isSucceed = false;
-          }
-          if($isSucceed)
-            $this->helper->create_notification(1, "Chỉnh sửa danh mục {$data['name']} thành công");
-          else
-            $this->helper->create_notification(0, "Chỉnh sửa danh mục {$data['name']} không thành công");
-          lib_redirect_back();
+            $id =$this->helper->slash($_POST['id']);
+            $data['room'] = $this->helper->slash($_POST['room']);
+            $data['thu2'] = $this->helper->slash($_POST['thu2']);
+            $data['thu3'] = $this->helper->slash($_POST['thu3']);
+            $data['thu4'] = $this->helper->slash($_POST['thu4']);
+            $data['thu5'] = $this->helper->slash($_POST['thu5']);
+            $data['thu6'] = $this->helper->slash($_POST['thu6']);
+            $data['thu7'] = $this->helper->slash($_POST['thu7']);
+            $data['cn'] = $this->helper->slash($_POST['cn']);
+            $isSucceed = $this->pdo->update('calender', $data, "id=$id");
+            if($isSucceed)
+              $this->helper->create_notification(1, "Chỉnh sửa lịch bác sỹ thành công");
+            else
+              $this->helper->create_notification(0, "Chỉnh sửa lịch bác sỹ không thành công");
+            lib_redirect_back();
         }
     }
 
     public function delete()
     {
-      $id = $_GET['id'];
-      $category = $this->pdo->fetch_one("SELECT * FROM categories WHERE parent_id = $id");
-      $post = $this->pdo->fetch_one("SELECT * FROM posts WHERE category_id = $id");
-      if(!$category && !$post)
-      {
-        $this->pdo->query("DELETE FROM categories WHERE id = $id");
+      $id =$this->helper->slash($_GET['id']);
+      if($this->pdo->query("DELETE FROM calender WHERE id = $id"))
         $this->helper->create_notification(1, "Xóa thành công");
-      }
       else
-      {
-        $this->helper->create_notification(0, "Xóa không thành công vì còn danh mục con hoặc bài viết");
-      }
+        $this->helper->create_notification(0, "Xóa không thành công");
       lib_redirect_back();
     }
-    public function active_status()
-    {
-        $item = $this->pdo->fetch_one("SELECT status FROM " . $this->table . " WHERE id=" . $_GET['id']);
-        $status = $item['status'] == 1 ? 0 : 1;
-        $this->pdo->query("UPDATE " . $this->table. " SET status = '$status' WHERE id=" . $_GET['id']);
-        lib_redirect_back();
-    }
 
-    public function ajax_load_category()
+    public function ajax_load()
     {
-        if( isset($_POST['id']) )
-        {
-          $cat = $this->pdo->fetch_one("SELECT * FROM categories WHERE id = " . $_POST['id'] . " and status = 1");
-          if(!$cat) {
-            $cat['code'] = $this->CategoryHelper->get_cat_code();
-          }
-          $cat['parent_option'] = $this->CategoryHelper->get_product_cat_parent_select($cat['id'], $cat['parent_id']);
-          echo json_encode($cat);
-        }
+        $id = $this->helper->slash($_POST['id']);
+        $calender = $this->pdo->fetch_one("SELECT * FROM calender WHERE id = $id");
+        echo json_encode($calender);
+        exit();
     }
 
     public function ajax_delete()

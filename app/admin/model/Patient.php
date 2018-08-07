@@ -12,11 +12,6 @@ class Patient extends Main
   public function index()
   {
 
-    //adding or editing
-    // $this->create_patient();
-    // $this->edit();
-    //searching
-    // echo gmdate('Y-m-d');
     $key = isset($_GET['key']) ? $_GET['key'] : "";
     $day = isset($_GET['day']) ? $_GET['day'] : 0;
     $sql_where = "WHERE 1 = 1 ";
@@ -70,17 +65,9 @@ class Patient extends Main
       $data['created_at'] = time();
       $isSucceed = $this->pdo->insert('patient', $data);
       if($isSucceed)
-      {
-          $_SESSION['notification']['status'] = "success";
-          $_SESSION['notification']['title'] = "Thành công";
-          $_SESSION['notification']['text'] = "Thêm bệnh nhân {$data['name']} thành công";
-      }
-    else
-      {
-          $_SESSION['notification']['status'] = "error";
-          $_SESSION['notification']['title'] = "Thất bại";
-          $_SESSION['notification']['text'] = "Thêm bệnh nhân {$data['name']} không thành công";
-      }
+          $this->helper->create_notification(1, "Thêm bệnh nhân {$data['name']} thành công");
+      else
+          $this->helper->create_notification(0, "Thêm bệnh nhân {$data['name']} không thành công");
       lib_redirect('./admin?mc=patient');
   }
 
@@ -95,20 +82,11 @@ class Patient extends Main
       $data["email"] = $_POST["email"];
       $data["phone"] = $_POST["phone"];
       $data['updated_at'] = time();
-      // $isSucceed = $this->pdo->insert('patient', $data);
       $isSucceed = $this->pdo->update('patient', $data, 'id='.$id);
       if($isSucceed)
-        {
-            $_SESSION['notification']['status'] = "success";
-            $_SESSION['notification']['title'] = "Thành công";
-            $_SESSION['notification']['text'] = "Chỉnh sửa bệnh nhân {$data['name']} thành công";
-        }
+          $this->helper->create_notification(1, "Chỉnh sửa bệnh nhân {$data['name']} thành công");
       else
-        {
-            $_SESSION['notification']['status'] = "error";
-            $_SESSION['notification']['title'] = "Thất bại";
-            $_SESSION['notification']['text'] = "Chỉnh sửa bệnh nhân {$data['name']} không thành công";
-        }
+          $this->helper->create_notification(0, "Chỉnh sửa bệnh nhân {$data['name']} không thành công");
       lib_redirect('./admin?mc=patient');
   }
 
@@ -201,20 +179,6 @@ class Patient extends Main
       $user = $this->pdo->fetch_one("SELECT * FROM patient WHERE id = " . $_POST['id']);
       echo json_encode($user);
     }
-  }
-  public function ajax_delete()
-  {
-    $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-            if($id == 0){
-                  exit();
-            }
-    if($this->currentUser['permission'] == 1 && $this->pdo->query("DELETE FROM users WHERE id=$id"))
-    {
-                  echo 1;
-                  exit();
-            }
-            echo 0;
-            exit;
   }
 
   function delete_video()

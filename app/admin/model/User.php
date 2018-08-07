@@ -50,77 +50,6 @@ class User extends Main
     $this->smarty->display(DEFAULT_LAYOUT);
   }
 
-  public function patient()
-  {
-
-    //adding or editing
-    // $this->create_patient();
-    // $this->edit();
-    //searching
-    $key = isset($_GET['key']) ? $_GET['key'] : "";
-    $sql_where = "WHERE 1 = 1 ";
-    if($key != "")
-    {
-      $key_custom = trim($key);
-      $sql_where .= " AND ( code LIKE '%$key_custom%' OR name LIKE '%$key_custom%')";
-    }
-    $out = [];
-    $out['key'] = $key;
-
-    //query
-    $sql = "SELECT * FROM users " . $sql_where;
-    $paging = $this->paging->get_content($this->pdo->count_rows($sql), 10);
-    $sql .= $paging['sql_add'];
-    $users = $this->pdo->fetch_all($sql);
-    foreach($users as $key => $user)
-    {
-      $users[$key]['status'] = $this->helper->help_get_status($user['status'], 'users', $user['id'], 'activeUser');
-      $users[$key]['username'] = strtoupper($user['username']);
-      $users[$key]['created_at'] = gmdate('d.m.Y', $user['created_at'] + 7 * 3600);
-      $users[$key]['updated_at'] = gmdate('d.m.Y', $user['updated_at'] + 7 * 3600);
-    }
-    //smarty
-    if(!empty($_SESSION['notification']))
-      $this->smarty->assign('notification', $_SESSION['notification']);
-    $this->smarty->assign('out', $out);
-    $this->smarty->assign('paging', $paging);
-    $this->smarty->assign('users', $users);
-    $this->smarty->display(DEFAULT_LAYOUT);
-  }
-
-  public function create_patient()
-  {
-      $data['code'] = $this->userHelper->get_user_code();
-      $data['name'] = $_POST['name'];
-      $data['username'] = "";
-      $data['password'] = "";
-      $data['avatar'] = "";
-      $data['age'] = $_POST["age"];
-      $data['permission'] = "0";
-      $data["gender"] = $_POST["gender"];
-      $data["address"] = $_POST["address"];
-      $data["email"] = $_POST["email"];
-      $data["phone"] = $_POST["phone"];
-      $data['created_at'] = time();
-      $data['status'] = 1;
-      pre($data);
-      die;
-      $isSucceed = $this->pdo->insert('users', $data);
-      //  pre($data);
-      // die;
-      if($isSucceed)
-      {
-          $_SESSION['notification']['title'] = "Thành công";
-          $_SESSION['notification']['text'] = "Thêm bệnh nhân thành công";
-      }
-    else
-      {
-          $_SESSION['notification']['title'] = "Thành công";
-          $_SESSION['notification']['text'] = "Thêm bệnh nhân không thành công";
-      }
-      lib_redirect_back();
-  }
-
   public function create()
   {
     if( isset($_POST['submit']) && $_POST['id'] == 0)
@@ -206,39 +135,6 @@ class User extends Main
           $this->smarty->assign('notification', $notification);
       }
     }
-
-  }
-
-  public function login()
-  {
-    global $login_id;
-
-    if(isset($_POST['submit']))
-    {
-      $username = trim($_POST['username']);
-      $password = trim($_POST['password']);
-      $user = $this->pdo->fetch_one("SELECT * FROM users WHERE username ='$username' and password ='$password' ");
-      if(!$user)
-      {
-        $this->smarty->assign('wrong', 1);
-        $this->smarty->display('login.tpl');
-        return;
-      }
-      if($user['status'] == 0)
-      {
-        $this->smarty->assign('status', 1);
-        $this->smarty->display('login.tpl');
-        return;
-      }
-        $_SESSION["LOGIN_MEMBER"] = $user['id'];
-        lib_redirect(HOME_PAGE);
-    }
-
-    if($login_id != 0)
-    {
-      lib_redirect(HOME_PAGE);
-    }
-    $this->smarty->display('login.tpl');
 
   }
 

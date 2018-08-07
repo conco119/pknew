@@ -3,7 +3,7 @@
     <div id="wrapper">
         <div id="login" class="animate form">
             <section class="login_content">
-                <form method="post" action="">
+                <form method="post" action="./admin?mc=pub&site=postLogin">
                     <h1>Đăng nhập</h1>
                     <div>
                         <input type="text" autofocus class="form-control text-center" name="username" placeholder="Tên đăng nhập" required value='admin'/>
@@ -19,14 +19,6 @@
                         <div class="clearfix"></div>
                         <br />
                         <div>
-                        {if $status eq 1}
-                            <p style='color: red'> Tài khoản bị vô hiệu hóa <p>
-                        {/if}
-                        {if $wrong eq 1}
-                            <p style='color: red'> Tài khoản hoặc mật khẩu không chính xác <p>
-                        {/if}
-                            {* <h1><i class="fa fa-paw" style="font-size: 26px;"></i> HLSELLING</h1>
-              <p>Sales management software<br>HLSTAR ©2016 All Rights Reserved.</p> *}
                         </div>
                     </div>
                 </form>
@@ -37,3 +29,23 @@
 
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    if( "{$notification.status}" == "success" || "{$notification.status}" == "error")
+    {
+        var notice = new PNotify({
+            title: "{$notification.title}",
+            text: "{$notification.text}",
+            type: "{$notification.status}",
+            mouse_reset: false,
+            buttons: {
+                sticker: false,
+        }
+        });
+        notice.get().click(function () {
+            notice.remove();
+        });
+    }
+})
+</script>
+

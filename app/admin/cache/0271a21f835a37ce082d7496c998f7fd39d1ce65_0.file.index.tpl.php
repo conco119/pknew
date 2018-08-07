@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-02 09:03:55
+/* Smarty version 3.1.30, created on 2018-08-06 10:01:34
   from "/Users/mtd/Sites/pknew/app/admin/view/home/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b62668b46fce3_18323873',
+  'unifunc' => 'content_5b67ba0e058e23_14428528',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0271a21f835a37ce082d7496c998f7fd39d1ce65' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/admin/view/home/index.tpl',
-      1 => 1528730553,
+      1 => 1533524492,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b62668b46fce3_18323873 (Smarty_Internal_Template $_smarty_tpl) {
-if (!is_callable('smarty_modifier_date_format')) require_once '/Users/mtd/Sites/pknew/library/smarty/plugins/modifier.date_format.php';
+function content_5b67ba0e058e23_14428528 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
     <div class="top_tiles">
@@ -30,10 +29,10 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/Users/mtd/Sites/
                 <div class="icon">
                     <i class="fa fa-file blue"></i>
                 </div>
-                <div class="count"><?php echo $_smarty_tpl->tpl_vars['statis_1']->value['exports'];?>
-</div>
-                <h3>Hóa đơn bán</h3>
-                <p>Tổng số hóa đơn bán hàng trong tháng.</p>
+                <div class="count">1</div>
+                <br>
+                <h3>Tổng số bài viết</h3>
+                
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -41,10 +40,9 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/Users/mtd/Sites/
                 <div class="icon">
                     <i class="fa fa-users green"></i>
                 </div>
-                <div class="count"><?php echo $_smarty_tpl->tpl_vars['statis_1']->value['customers'];?>
-</div>
-                <h3>Khách hàng</h3>
-                <p>Tổng số khách hàng được quản lý.</p>
+                <div class="count">1</div>
+                <br>
+                <h3>Tổng số bệnh nhân</h3>
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -52,9 +50,9 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/Users/mtd/Sites/
                 <div class="icon">
                     <i class="fa fa-user-md green"></i>
                 </div>
-                <div class="count"><?php echo $_smarty_tpl->tpl_vars['statis_1']->value['suppliers'];?>
-</div>
-                <h3>Nhà cung cấp</h3>
+                <div class="count">1</div>
+                <br>
+                <h3>Số người dùng</h3>
                 <p>Tổng số nhà cung cấp.</p>
             </div>
         </div>
@@ -63,8 +61,7 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/Users/mtd/Sites/
                 <div class="icon">
                     <i class="fa fa-warning red"></i>
                 </div>
-                <div class="count"><?php echo $_smarty_tpl->tpl_vars['statis_1']->value['products'];?>
-</div>
+                <div class="count">1</div>
                 <h3>Sản phẩm đã hết và sắp hết</h3>
                 <p>Số sản phẩm cảnh báo hết cần nhập thêm.</p>
             </div>
@@ -89,28 +86,6 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/Users/mtd/Sites/
                                 <div class="clearfix"></div>
                             </div>
                             <ul class="list-unstyled top_profiles scroll-view">
-                            	<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['statis_2']->value, 'data');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['data']->value) {
-?>
-                                <li class="media event">
-                                	<a class="pull-left border-aero profile_thumb"> <i class="fa fa-user aero"></i></a>
-                                    <div class="media-body">
-                                        <a class="title"><?php echo $_smarty_tpl->tpl_vars['data']->value['code'];?>
-</a>
-                                        <p ><strong style='color:red'><?php echo number_format($_smarty_tpl->tpl_vars['data']->value['must_pay']);?>
-đ </strong> <small><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['data']->value['created_at'],"%d-%m-%Y");?>
-</small></p>
-                                        <p><small><?php echo $_smarty_tpl->tpl_vars['data']->value['customer_name'];?>
-</small></p>
-                                    </div>
-                                </li>
-                                <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
 
                             </ul>
                         </div>
@@ -123,28 +98,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                 <div class="clearfix"></div>
                             </div>
                             <ul class="list-unstyled top_profiles scroll-view">
-                            	<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['statis_3']->value, 'data');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['data']->value) {
-?>
-                                <li class="media event">
-                                	<a class="pull-left border-aero profile_thumb"> <i class="fa fa-user aero"></i></a>
-                                    <div class="media-body">
-                                        <a class="title"><?php echo $_smarty_tpl->tpl_vars['data']->value['code'];?>
-</a>
-                                        <p><strong  style='color:red'><?php echo number_format($_smarty_tpl->tpl_vars['data']->value['must_pay']);?>
-đ </strong> <small><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['data']->value['created_at'],"%d-%m-%Y");?>
-</small></p>
-                                        <p><small><?php echo $_smarty_tpl->tpl_vars['data']->value['supplier_name'];?>
-</small></p>
-                                    </div>
-                                </li>
-                                <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
 
                             </ul>
                         </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-06 00:23:35
+/* Smarty version 3.1.30, created on 2018-08-06 09:20:25
   from "/Users/mtd/Sites/pknew/app/admin/view/layouts/includes/sidebar.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b673297a8d194_38115696',
+  'unifunc' => 'content_5b67b0691960d5_91419088',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ca963ae5f743d88ea3aac00e8f507e70605ea21' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/admin/view/layouts/includes/sidebar.tpl',
-      1 => 1533489812,
+      1 => 1533522023,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b673297a8d194_38115696 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b67b0691960d5_91419088 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="left_col scroll-view">
 
@@ -46,7 +46,7 @@ mc=post&site=index"><i style="width:26px;" class="glyphicon glyphicon-list-alt">
 				<li><a href="<?php echo $_smarty_tpl->tpl_vars['arg']->value['prefix_admin'];?>
 mc=calender&site=index"><i class="fa fa-calendar" aria-hidden="true"></i>    Lịch bác sỹ</a></li>
 				<li><a href="<?php echo $_smarty_tpl->tpl_vars['arg']->value['prefix_admin'];?>
-mc=report&site=performance"><i style="width:26px;" class="fa fa-bar-chart-o"></i>    Thống kê</a></li>
+"><i style="width:26px;" class="fa fa-bar-chart-o"></i>    Thống kê</a></li>
 				<li><a href="<?php echo $_smarty_tpl->tpl_vars['arg']->value['prefix_admin'];?>
 mc=contact&site=index"><i class="fa fa-envelope-o" aria-hidden="true"></i>Liên hệ</a></li>
 				<li><a href="<?php echo $_smarty_tpl->tpl_vars['arg']->value['prefix_admin'];?>

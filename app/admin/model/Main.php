@@ -43,8 +43,6 @@ class Main
 
    public function set_value()
   {
-
-
     $this->currentUser = $this->check_user();
     $this->arg = array(
             'stylesheet' => DOMAIN . "app/webroot/",
@@ -64,7 +62,6 @@ class Main
             'prefix_admin' => "./admin?",
     );
     //user avatar to header view
-
   }
   function setdb()
   {

@@ -17,7 +17,7 @@
 				<li> <a href="{$arg.prefix_admin}mc=category&site=index"> <i style="width:26px;" class="glyphicon glyphicon-list-alt"></i>Danh mục bài viết</a></li>
 				<li><a href="{$arg.prefix_admin}mc=post&site=index"><i style="width:26px;" class="glyphicon glyphicon-list-alt"></i>    Quản lý bài viết</a></li>
 				<li><a href="{$arg.prefix_admin}mc=calender&site=index"><i class="fa fa-calendar" aria-hidden="true"></i>    Lịch bác sỹ</a></li>
-				<li><a href="{$arg.prefix_admin}mc=report&site=performance"><i style="width:26px;" class="fa fa-bar-chart-o"></i>    Thống kê</a></li>
+				<li><a href="{$arg.prefix_admin}"><i style="width:26px;" class="fa fa-bar-chart-o"></i>    Thống kê</a></li>
 				<li><a href="{$arg.prefix_admin}mc=contact&site=index"><i class="fa fa-envelope-o" aria-hidden="true"></i>Liên hệ</a></li>
 				<li><a href="{$arg.prefix_admin}mc=user&site=index"><i class="fa fa-user"></i> Quản lý người dùng</a></li>
 			</ul>

@@ -5,9 +5,10 @@
                 <div class="icon">
                     <i class="fa fa-file blue"></i>
                 </div>
-                <div class="count">{$statis_1.exports}</div>
-                <h3>Hóa đơn bán</h3>
-                <p>Tổng số hóa đơn bán hàng trong tháng.</p>
+                <div class="count">1</div>
+                <br>
+                <h3>Tổng số bài viết</h3>
+                {* <p>Tổng số hóa đơn bán hàng trong tháng.</p> *}
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -15,9 +16,9 @@
                 <div class="icon">
                     <i class="fa fa-users green"></i>
                 </div>
-                <div class="count">{$statis_1.customers}</div>
-                <h3>Khách hàng</h3>
-                <p>Tổng số khách hàng được quản lý.</p>
+                <div class="count">1</div>
+                <br>
+                <h3>Tổng số bệnh nhân</h3>
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -25,8 +26,9 @@
                 <div class="icon">
                     <i class="fa fa-user-md green"></i>
                 </div>
-                <div class="count">{$statis_1.suppliers}</div>
-                <h3>Nhà cung cấp</h3>
+                <div class="count">1</div>
+                <br>
+                <h3>Số người dùng</h3>
                 <p>Tổng số nhà cung cấp.</p>
             </div>
         </div>
@@ -35,7 +37,7 @@
                 <div class="icon">
                     <i class="fa fa-warning red"></i>
                 </div>
-                <div class="count">{$statis_1.products}</div>
+                <div class="count">1</div>
                 <h3>Sản phẩm đã hết và sắp hết</h3>
                 <p>Số sản phẩm cảnh báo hết cần nhập thêm.</p>
             </div>
@@ -63,16 +65,7 @@
                                 <div class="clearfix"></div>
                             </div>
                             <ul class="list-unstyled top_profiles scroll-view">
-                            	{foreach from=$statis_2 item=data}
-                                <li class="media event">
-                                	<a class="pull-left border-aero profile_thumb"> <i class="fa fa-user aero"></i></a>
-                                    <div class="media-body">
-                                        <a class="title">{$data.code}</a>
-                                        <p ><strong style='color:red'>{$data.must_pay|number_format}đ </strong> <small>{$data.created_at|date_format:"%d-%m-%Y"}</small></p>
-                                        <p><small>{$data.customer_name}</small></p>
-                                    </div>
-                                </li>
-                                {/foreach}
+
                             </ul>
                         </div>
                     </div>
@@ -84,16 +77,7 @@
                                 <div class="clearfix"></div>
                             </div>
                             <ul class="list-unstyled top_profiles scroll-view">
-                            	{foreach from=$statis_3 item=data}
-                                <li class="media event">
-                                	<a class="pull-left border-aero profile_thumb"> <i class="fa fa-user aero"></i></a>
-                                    <div class="media-body">
-                                        <a class="title">{$data.code}</a>
-                                        <p><strong  style='color:red'>{$data.must_pay|number_format}đ </strong> <small>{$data.created_at|date_format:"%d-%m-%Y"}</small></p>
-                                        <p><small>{$data.supplier_name}</small></p>
-                                    </div>
-                                </li>
-                                {/foreach}
+
                             </ul>
                         </div>
                     </div>

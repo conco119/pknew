@@ -25,6 +25,8 @@
 
 
 <script src="{$arg.stylesheet}js/jquery.min.js"></script>
+<script src="{$arg.stylesheet}js/notify/pnotify.core.js"></script>
+<script src="{$arg.stylesheet}js/notify/pnotify.buttons.js"></script>
 
 <!--[if lt IE 9]>
         <script src="../assets/js/ie8-responsive-file-warning.js"></script>

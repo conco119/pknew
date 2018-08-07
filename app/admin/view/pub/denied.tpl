@@ -9,7 +9,7 @@
 	</div> <!-- /error-details -->
 	<br><br>
 	<div class="error-actions">
-		<a href="./admin" class="btn btn-large btn-primary">
+		<a href="./" class="btn btn-large btn-primary">
 			<i class="icon-chevron-left"></i>
 			&nbsp;
 			Back to Dashboard

@@ -159,118 +159,12 @@ class Helper extends HelpAbstract
 
     }
 
-    public function get_child_products($id, $products, $str_id, $key, $trade)
-    {
-        $all_child = $this->pdo->fetch_all("SELECT * FROM product_categories WHERE parent_id = {$id}");
-        // $cc = [];
-        if( $all_child )
-        {
 
-            foreach($all_child as $value)
-            {
-
-                $sql = "SELECT a.id, a.code, a.name, a.price_import, a.price,
-                (SELECT SUM(number_count) FROM import_products WHERE a.id=product_id) imported,
-                (SELECT SUM(number_count) FROM export_products WHERE a.id=product_id) exported
-                FROM products a
-                WHERE a.category_id = {$value['id']} AND a.id NOT IN ($str_id) AND a.status=1";
-
-                if ($trade != 0)
-                    $sql .= " AND a.trademark_id = $trade";
-                if($key != '')
-                    $sql .= " AND (a.code LIKE '%$key%' OR a.name LIKE '%$key%')";
-
-                $products = array_merge($products, $this->pdo->fetch_all($sql) );
-
-                if($value['parent_id'] != 0)
-                {
-                    $products = $this->get_child_products($value['id'], $products, $str_id, $key, $trade);
-                }
-
-            }
-        }
-        return $products;
-    }
-
-    public function get_option_customer_export($id)
-    {
-        $sql = "SELECT a.id, a.code, a.name, a.phone, b.name as group_name FROM customers a LEFT JOIN customer_groups b  ON a.group_id = b.id WHERE a.status = 1";
-        $customers = $this->pdo->fetch_all($sql);
-
-        $result = "<option value='0'> Chọn khách hàng </option>";
-        foreach($customers as $k => $customer)
-        {
-            if($customer['id'] == $id)
-                $result .= "<option value='{$customer['id']}' selected>{$customer['name']} - {$customer['phone']} - {$customer['group_name']}</option>";
-            else
-                $result .= "<option value='{$customer['id']}'>{$customer['name']} - {$customer['phone']} - {$customer['group_name']}</option>";
-        }
-        return $result;
-    }
     function check_type($type)
     {
         return in_array($type, $this->true_type);
     }
-    // lọc tuần, tháng , năm
-    function get_select_from_array($index)
-    {
-        $result = '';
-        foreach ($this->select_export AS $k => $item) {
-            if ($k == $index)
-            {
-                $result .= "<option value='$k' selected>" . $item . "</option>";
-            }
-            else
-            {
-                $result .= "<option value='$k'>" . $item . "</option>";
-            }
-        }
-        return $result;
-    }
 
-    public function get_option_with_status($table, $match_id = 0)
-    {
-        $query_result = $this->pdo->fetch_all("SELECT * FROM $table WHERE status = 1");
-        foreach($query_result as $key => $value)
-        {
-            if($value['id'] == $match_id)
-                $result .= "<option value='{$value['id']}' selected>{$value['name']}</option>";
-            else
-            $result .= "<option value='{$value['id']}'>{$value['name']}</option>";
-        }
-        return $result;
-    }
-
-    public function get_option_properties($property, $match_id = 0)
-    {
-        $result = '';
-        foreach($this->$property as $key => $value)
-        {
-            if($key == $match_id)
-                $result .= "<option value='{$key}' selected>{$value}</option>";
-            else
-                $result .= "<option value='{$key}'>{$value}</option>";
-        }
-        return $result;
-    }
-
-    public function help_get_text_status($status, $table, $id, $custom_function="activeStatus")
-    {
-        $status = $status == 1 ? 1 : 0;
-        $result = "<button type=\"button\" class=\"btn order-status ";
-        if ($status == 1)
-            $result .= "btn-success ";
-        else
-            $result .= "btn-danger ";
-        $result .= "btn-xs order-status\" onclick=\"$custom_function('$table', '$id');\">";
-        if ($status == 1)
-            $result .= "Duyệt";
-        else
-            $result .= "Chờ";
-        $result .= "</button>";
-
-        return $result;
-    }
       function create_notification($type, $text)
       {
         if($type == 1)
@@ -286,4 +180,10 @@ class Helper extends HelpAbstract
             $_SESSION['notification']['text'] = $text;
         }
       }
+
+      function slash($data)
+      {
+        return addslashes($data);
+      }
+
 }
