@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-05 23:43:15
+/* Smarty version 3.1.30, created on 2018-08-12 18:44:51
   from "/Users/mtd/Sites/pknew/app/admin/view/post/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b6729230d5082_33063089',
+  'unifunc' => 'content_5b701db3e1fa53_34414319',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e03ce736a6af8b5e7d62127e15acc7f0472b67ce' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/admin/view/post/index.tpl',
-      1 => 1533487394,
+      1 => 1534074289,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b6729230d5082_33063089 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b701db3e1fa53_34414319 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
     <div class="row">
@@ -36,8 +36,6 @@ function content_5b6729230d5082_33063089 (Smarty_Internal_Template $_smarty_tpl)
                 </div>
                 <div class="x_content">
                     <div class="h_content">
-                        
-
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#UpdateForm" onclick="LoadDataForForm(0);"><i class="fa fa-pencil"></i> Thêm mới</button>
 
                         <div class="clearfix"></div>
@@ -51,6 +49,7 @@ function content_5b6729230d5082_33063089 (Smarty_Internal_Template $_smarty_tpl)
                                     <th>Hình ảnh</th>
                                     <th>Thuộc danh mục</th>
 									<th class="text-right">Trạng thái</th>
+                                    <th class="text-right">Nổi bật</th>
                                     <th class="text-right"></th>
                                 </tr>
                             </thead>
@@ -78,6 +77,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['data']->value) {
 ' type="button" class="btn btn-success btn-xs btn-status"><i class="fa fa-check"></i></a>
                                             <?php } else { ?>
                                                 <a href='./admin?mc=post&site=active_status&id=<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
+' type="button" class="btn btn-danger btn-xs btn-status"><i class="fa fa-close"></i></a>
+                                            <?php }?>
+                                        </td>
+                                        <td class="text-center">
+                                            <?php if ($_smarty_tpl->tpl_vars['data']->value['is_hot'] == 1) {?>
+                                                <a href='./admin?mc=post&site=is_hot&id=<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
+' type="button" class="btn btn-success btn-xs btn-status"><i class="fa fa-check"></i></a>
+                                            <?php } else { ?>
+                                                <a href='./admin?mc=post&site=is_hot&id=<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
 ' type="button" class="btn btn-danger btn-xs btn-status"><i class="fa fa-close"></i></a>
                                             <?php }?>
                                         </td>

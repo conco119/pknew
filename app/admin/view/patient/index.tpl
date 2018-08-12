@@ -54,6 +54,7 @@
                     <td>{$data.phone}</td>
                     <td class="text-right">
                       <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#VideoModal" onclick='modal_video_click({$data.id})' ><i class="fa fa-camera"></i></button>
+                      {* <a type="button" class="btn btn-primary btn-xs" href='./admin?mc=patient&site=detail&id={$data.id}'><i class="fa fa-info"></i></a> *}
                       <a type="button" class="btn btn-primary btn-xs" href='./admin?mc=patient&site=detail&id={$data.id}'><i class="fa fa-info"></i></a>
                       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#EditForm" onclick="LoadEditData({$data.id});"><i class="fa fa-pencil"></i></button>
                       <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#DeleteForm" onclick="LoadModalDelete({$data.id});"><i class="fa fa-trash-o"></i></button>
@@ -80,7 +81,7 @@
         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Xóa mục này</h4>
       </div>
-      <div class="modal-body">Bạn chắc chắn muốn xóa mục này chứ?</div>
+      <div class="modal-body">Bạn chắc chắn muốn xóa bệnh nhân này chứ?</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
         <a type="button" class="btn btn-danger" id="DeleteItem">Xóa</a>
@@ -366,6 +367,7 @@ function filter()
     var key = $("#key").val();
     var day = $("#day").val();
     var url = "./admin?mc=patient";
+    // var url = "./admin/benh-nhan/?";
     url += "&key=" + key;
     url += "&day=" + day;
     window.location.href = url;

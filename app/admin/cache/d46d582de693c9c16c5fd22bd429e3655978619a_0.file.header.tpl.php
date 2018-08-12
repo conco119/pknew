@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-02 09:03:55
+/* Smarty version 3.1.30, created on 2018-08-07 19:40:23
   from "/Users/mtd/Sites/pknew/app/admin/view/layouts/includes/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b62668b409a38_07811252',
+  'unifunc' => 'content_5b699337135f42_98605074',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b62668b409a38_07811252 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b699337135f42_98605074 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <div class="top_nav">

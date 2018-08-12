@@ -18,4 +18,25 @@ class Helper extends HelpAbstract
         return $all_child;
     }
 
+    function create_notification($type, $text)
+    {
+        if($type == 1)
+        {
+            $_SESSION['notification']['status'] = "success";
+            $_SESSION['notification']['title'] = "Thành công";
+            $_SESSION['notification']['text'] = $text;
+        }
+        if($type == 0)
+        {
+            $_SESSION['notification']['status'] = "error";
+            $_SESSION['notification']['title'] = "Thất bại";
+            $_SESSION['notification']['text'] = $text;
+        }
+    }
+
+    function slash($data)
+    {
+      return addslashes($data);
+    }
+
 }

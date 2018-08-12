@@ -10,7 +10,7 @@
             </div>
             <div class="x_content">
                 <div class="h_content">
-                    <a href="./admin?mc=patient" class="btn btn-primary left"><i
+                    <a href="{$arg.prefix_admin}mc=patient" class="btn btn-primary left"><i
                                 class="fa fa-arrow-left"></i> Quản lý bệnh nhân</a>
                     <div class="clearfix"></div>
                 </div>

@@ -12,12 +12,6 @@
                 </div>
                 <div class="x_content">
                     <div class="h_content">
-                        {* <div class="form-group form-inline">
-                            <input type="search" class="left form-control" id="key" placeholder="Tiêu đề bài viết" value="{$out.key}">
-                            <select class="left form-control" id="category"><option value="0">Danh mục</option>{$out.categories}</select>
-                        </div>
-                        <button id="search_btn" type="button" class="btn btn-primary left" onclick="filter();"><i class="fa fa-search"></i></button> *}
-
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#UpdateForm" onclick="LoadDataForForm(0);"><i class="fa fa-pencil"></i> Thêm mới</button>
 
                         <div class="clearfix"></div>
@@ -31,6 +25,7 @@
                                     <th>Hình ảnh</th>
                                     <th>Thuộc danh mục</th>
 									<th class="text-right">Trạng thái</th>
+                                    <th class="text-right">Nổi bật</th>
                                     <th class="text-right"></th>
                                 </tr>
                             </thead>
@@ -49,6 +44,13 @@
                                                 <a href='./admin?mc=post&site=active_status&id={$data.id}' type="button" class="btn btn-success btn-xs btn-status"><i class="fa fa-check"></i></a>
                                             {else}
                                                 <a href='./admin?mc=post&site=active_status&id={$data.id}' type="button" class="btn btn-danger btn-xs btn-status"><i class="fa fa-close"></i></a>
+                                            {/if}
+                                        </td>
+                                        <td class="text-center">
+                                            {if $data.is_hot eq 1}
+                                                <a href='./admin?mc=post&site=is_hot&id={$data.id}' type="button" class="btn btn-success btn-xs btn-status"><i class="fa fa-check"></i></a>
+                                            {else}
+                                                <a href='./admin?mc=post&site=is_hot&id={$data.id}' type="button" class="btn btn-danger btn-xs btn-status"><i class="fa fa-close"></i></a>
                                             {/if}
                                         </td>
                                         <td class="text-right" width="15%">

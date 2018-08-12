@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-06 16:48:54
+/* Smarty version 3.1.30, created on 2018-08-07 19:49:41
   from "/Users/mtd/Sites/pknew/app/admin/view/pub/login.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b681986117985_65698272',
+  'unifunc' => 'content_5b69956536a433_99965853',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b681986117985_65698272 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b69956536a433_99965853 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
     <a class="hiddenanchor" id="toregister"></a> <a class="hiddenanchor" id="tologin"></a>

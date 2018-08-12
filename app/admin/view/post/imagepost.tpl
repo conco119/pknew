@@ -20,8 +20,8 @@
     </div>
 </div>
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#product-image">Hình ảnh sản phẩm</a></li>
-    <li><a class="data-toggle=" data-toggle="tab" href="#product-post">Bài viết sản phẩm</a></li>
+    <li class="active"><a data-toggle="tab" href="#product-image">Hình ảnh bài viét</a></li>
+    <li><a class="data-toggle=" data-toggle="tab" href="#product-post">Bài viết</a></li>
 </ul>
 <div class='tab-content' style='margin-top:20px'>
     <div id='product-image' class='tab-pane fade in active'>

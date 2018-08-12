@@ -37,7 +37,13 @@
                                 <td class="text-center">
                                 	{$list.created_at}
                                 </td>
-                                <td class="text-center" id="stt{$list.id}">{$list.status}</td>
+                                <td class="text-center" id="stt{$list.id}">
+                                {if $list.status eq 0}
+                                <a href='./admin?mc=contact&site=active&id={$list.id}' ype="button" class="btn order-status btn-danger btn-xs order-status" >Chờ</a>
+                                {else}
+                                <a href='./admin?mc=contact&site=active&id={$list.id}' type="button" class="btn order-status btn-success btn-xs order-status"> Đã Duyệt</a>
+                                {/if}
+                                </td>
                                 <td class="text-center">
                                     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#orderDetail" onclick="GetDetailContact({$list.id});"><i class="fa fa-search-plus"></i></button>
                                 </td>

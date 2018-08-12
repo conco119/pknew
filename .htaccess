@@ -1,7 +1,14 @@
 #turn rewirte engine on
 RewriteEngine on
+#RewriteBase /
+#RewriteCond %{HTTP_HOST} ^localhost/pknew/admin$
+#RewriteRule (.*) http://localhost/pknew/admin$1 [R=301,L]
 
-#rewrite for post
+
+
+
 RewriteRule ^admin app/admin/index.php [NC]
 RewriteRule ^index.php app/site/index.php [NC]
-RewriteRule ^search app/site/index.php?mc=product&site=search [NC]
+#RewriteRule ^index.php app/site/index.php [NC]
+#RewriteRule ^search app/site/index.php?mc=product&site=search [NC]
+#RewriteRule ^admin/benh-nhan app/admin/index.php?mc=patient [NC]

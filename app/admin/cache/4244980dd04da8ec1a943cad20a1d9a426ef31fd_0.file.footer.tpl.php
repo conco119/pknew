@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-05 16:18:23
+/* Smarty version 3.1.30, created on 2018-08-07 19:40:23
   from "/Users/mtd/Sites/pknew/app/admin/view/layouts/includes/footer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b66c0df4274c9_05749377',
+  'unifunc' => 'content_5b6993371c0a84_12147585',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b66c0df4274c9_05749377 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b6993371c0a84_12147585 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <footer>
 	<div class="copyright-info">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-02 09:18:40
+/* Smarty version 3.1.30, created on 2018-08-07 19:51:50
   from "/Users/mtd/Sites/pknew/app/admin/view/user/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b626a00133475_28482170',
+  'unifunc' => 'content_5b6995e693bb57_78191334',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4958ffd0c7a2638ee3a63ca8f4162c569b2cbf21' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/admin/view/user/index.tpl',
-      1 => 1529213008,
+      1 => 1533646310,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b626a00133475_28482170 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b6995e693bb57_78191334 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
   <div class="row">
@@ -39,21 +39,7 @@ function content_5b626a00133475_28482170 (Smarty_Internal_Template $_smarty_tpl)
         <div class="x_content">
 
           <div class="h_content">
-            <!-- <div class="form-group form-inline">
-              <input class="left form-control">
-              <select class="left form-control"><option>Select</option></select>
-            </div> -->
-
-            <div class="form-group form-inline">
-              <input type="search" class="left form-control" id="key" placeholder="Mã / tên người dùng" value="<?php echo $_smarty_tpl->tpl_vars['out']->value['key'];?>
-">
-              <select class="left form-control" id="permission"><option value="">Danh mục</option><?php echo $_smarty_tpl->tpl_vars['out']->value['permission'];?>
-</select>
-            </div>
-            <button id="search_btn" type="button" class="btn btn-primary left" onclick="filter();"><i class="fa fa-search"></i></button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#UpdateFrom" onclick="LoadDataForForm(0);"><i class="fa fa-pencil"></i> Thêm mới</button>
-            <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-check-square-o"></i> Kích hoạt</button> -->
-            
             <div class="clearfix"></div>
           </div>
 
@@ -62,11 +48,7 @@ function content_5b626a00133475_28482170 (Smarty_Internal_Template $_smarty_tpl)
               <table class="table table-striped table-hover projects">
                 <thead>
                   <tr>
-                    
-                    <!-- <th>Avatar</th> -->
-                    <th>Mã nhân viên</th>
-                    <th>Nhân viên</th>
-                    <th>Chức vụ</th>
+                    <th>Người dùng</th>
                     <th class="text-center">Trạng thái</th>
                     <th class="text-right"></th>
                   </tr>
@@ -77,30 +59,16 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['data']->value) {
 ?>
-                  <tr id="field<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
-">
-                    <!-- <td>
-                      <ul class="list-inline">
-                        <li><img src="<?php echo $_smarty_tpl->tpl_vars['data']->value['avatar'];?>
-" class="avatar" alt="Avatar"></li>
-                      </ul>
-                    </td> -->
-                    <td><?php echo $_smarty_tpl->tpl_vars['data']->value['code'];?>
-</td>
+                  <tr>
                     <td><a href="#"><?php echo $_smarty_tpl->tpl_vars['data']->value['username'];?>
  (<?php echo $_smarty_tpl->tpl_vars['data']->value['name'];?>
-)</a> <br /> <small>Created <?php echo $_smarty_tpl->tpl_vars['data']->value['created_at'];?>
-</small> <small>Updated <?php echo $_smarty_tpl->tpl_vars['data']->value['updated_at'];?>
-</small></td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['data']->value['permission'];?>
-</td>
+)</a> </td>
                     <td class="text-center" id="stt<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
 ">
                       <?php echo $_smarty_tpl->tpl_vars['data']->value['status'];?>
 
                     </td>
                     <td class="text-right">
-                      
                       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#UpdateFrom" onclick="LoadDataForForm(<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
 );"><i class="fa fa-pencil"></i></button>
                       <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#DeleteForm" onclick="LoadDeleteItem('user', <?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
@@ -270,12 +238,6 @@ function activeUser(table, id) {
 }
 
 
-function LoadDataContent(id){
-  $.post("?mod=user&site=load_user_permission", {'id':id} )
-  .done(function(data){
-    $("#ContentModal .modal-body").html(data);
-  });
-}
 
 
 function LoadDataForForm(id) {
@@ -321,15 +283,7 @@ function LoadDataForForm(id) {
 
   });
 }
-function filter() {
-    var key = $("#key").val();
-    var permission = $("#permission").val();
 
-    var url = "./admin?mc=user&site=index";
-    url += "&permission=" + permission;
-    url += "&key=" + key;
-    window.location.href = url;
-}
 <?php echo '</script'; ?>
 >
 
@@ -358,5 +312,6 @@ $(document).ready(function() {
 	}
 })
 <?php echo '</script'; ?>
-><?php }
+>
+<?php }
 }

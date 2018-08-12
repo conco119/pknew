@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-05 22:04:44
+/* Smarty version 3.1.30, created on 2018-08-11 18:32:29
   from "/Users/mtd/Sites/pknew/app/admin/view/post/imagepost.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b67120cdaeb63_79500053',
+  'unifunc' => 'content_5b6ec94d298c42_60833718',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fa17cdb2197b0fcffc9fd57981bae28117fc9139' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/admin/view/post/imagepost.tpl',
-      1 => 1533481453,
+      1 => 1533987147,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b67120cdaeb63_79500053 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b6ec94d298c42_60833718 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <div>
@@ -45,8 +45,8 @@ function content_5b67120cdaeb63_79500053 (Smarty_Internal_Template $_smarty_tpl)
     </div>
 </div>
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#product-image">Hình ảnh sản phẩm</a></li>
-    <li><a class="data-toggle=" data-toggle="tab" href="#product-post">Bài viết sản phẩm</a></li>
+    <li class="active"><a data-toggle="tab" href="#product-image">Hình ảnh bài viét</a></li>
+    <li><a class="data-toggle=" data-toggle="tab" href="#product-post">Bài viết</a></li>
 </ul>
 <div class='tab-content' style='margin-top:20px'>
     <div id='product-image' class='tab-pane fade in active'>

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-06 10:01:34
+/* Smarty version 3.1.30, created on 2018-08-07 19:40:49
   from "/Users/mtd/Sites/pknew/app/admin/view/home/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b67ba0e058e23_14428528',
+  'unifunc' => 'content_5b699351dfec91_00478889',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b67ba0e058e23_14428528 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b699351dfec91_00478889 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
     <div class="top_tiles">

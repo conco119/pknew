@@ -23,7 +23,7 @@ class Post extends Main
         //     $sql_filter .= " AND (a.code LIKE  '%$key%' OR a.name LIKE '%$key%' )";
         // $out['categories'] =  $this->helper->get_option(1, 'product_categories', $cat_id);
         // $out['key'] = $key;
-        $sql = "SELECT id, slug, title, status, category_id, created_at, updated_at FROM posts";
+        $sql = "SELECT id, slug, title, status, is_hot, category_id, created_at, updated_at FROM posts";
         $paging = $this->paging->get_content($this->pdo->count_rows($sql), 20);
         $sql .= $paging['sql_add'];
         $posts = $this->pdo->fetch_all($sql);
@@ -290,6 +290,14 @@ class Post extends Main
         $id = $_POST['id'];
         $data['content'] = $_POST['content'];
         $this->pdo->update('posts', $data, "id=$id");
+        lib_redirect_back();
+    }
+
+    function is_hot()
+    {
+        $item = $this->pdo->fetch_one("SELECT is_hot FROM " . $this->table . " WHERE id=" . $_GET['id']);
+        $is_hot = $item['is_hot'] == 1 ? 0 : 1;
+        $this->pdo->query("UPDATE " . $this->table. " SET is_hot = '$is_hot' WHERE id=" . $_GET['id']);
         lib_redirect_back();
     }
 }

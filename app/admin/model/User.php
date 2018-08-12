@@ -11,40 +11,16 @@ class User extends Main
   public function index()
   {
 
-    //adding or editing
-    $this->create();
-    $this->edit();
-    //searching
-    $key = isset($_GET['key']) ? $_GET['key'] : "";
-    $permission = isset($_GET['permission']) ? intval($_GET["permission"]) : 0;
-    $sql_where = "WHERE 1 = 1 ";
-    if($key != "")
-    {
-      $key_custom = trim($key);
-      $sql_where .= " AND ( code LIKE '%$key_custom%' OR name LIKE '%$key_custom%')";
-    }
-    if($permission != "")
-    {
-      $sql_where .= "AND permission=$permission";
-    }
-    $out = [];
-    $out['permission'] =  $this->userHelper->help_get_user_permission_option($permission);
-    $out['key'] = $key;
-    //query
-    $sql = "SELECT * FROM users " . $sql_where;
+
+    $sql = "SELECT * FROM users ";
     $paging = $this->paging->get_content($this->pdo->count_rows($sql), 10);
     $sql .= $paging['sql_add'];
     $users = $this->pdo->fetch_all($sql);
     foreach($users as $key => $user)
     {
       $users[$key]['status'] = $this->helper->help_get_status($user['status'], 'users', $user['id'], 'activeUser');
-      $users[$key]['username'] = strtoupper($user['username']);
-      $users[$key]['created_at'] = gmdate('d.m.Y', $user['created_at'] + 7 * 3600);
-      $users[$key]['updated_at'] = gmdate('d.m.Y', $user['updated_at'] + 7 * 3600);
-      $users[$key]['permission'] = $this->userHelper->get_permission_type($user['permission']);
     }
     //smarty
-    $this->smarty->assign('out', $out);
     $this->smarty->assign('paging', $paging);
     $this->smarty->assign('users', $users);
     $this->smarty->display(DEFAULT_LAYOUT);

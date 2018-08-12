@@ -15,19 +15,7 @@
         <div class="x_content">
 
           <div class="h_content">
-            <!-- <div class="form-group form-inline">
-              <input class="left form-control">
-              <select class="left form-control"><option>Select</option></select>
-            </div> -->
-
-            <div class="form-group form-inline">
-              <input type="search" class="left form-control" id="key" placeholder="Mã / tên người dùng" value="{$out.key}">
-              <select class="left form-control" id="permission"><option value="">Danh mục</option>{$out.permission}</select>
-            </div>
-            <button id="search_btn" type="button" class="btn btn-primary left" onclick="filter();"><i class="fa fa-search"></i></button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#UpdateFrom" onclick="LoadDataForForm(0);"><i class="fa fa-pencil"></i> Thêm mới</button>
-            <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-check-square-o"></i> Kích hoạt</button> -->
-            {* <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class="fa fa-times-circle"></i> Hủy</button> *}
             <div class="clearfix"></div>
           </div>
 
@@ -36,31 +24,19 @@
               <table class="table table-striped table-hover projects">
                 <thead>
                   <tr>
-                    {* <th style="width: 1%"><input type="checkbox"></th> *}
-                    <!-- <th>Avatar</th> -->
-                    <th>Mã nhân viên</th>
-                    <th>Nhân viên</th>
-                    <th>Chức vụ</th>
+                    <th>Người dùng</th>
                     <th class="text-center">Trạng thái</th>
                     <th class="text-right"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {foreach from=$users item=data}
-                  <tr id="field{$data.id}">
-                    <!-- <td>
-                      <ul class="list-inline">
-                        <li><img src="{$data.avatar}" class="avatar" alt="Avatar"></li>
-                      </ul>
-                    </td> -->
-                    <td>{$data.code}</td>
-                    <td><a href="#">{$data.username} ({$data.name})</a> <br /> <small>Created {$data.created_at}</small> <small>Updated {$data.updated_at}</small></td>
-                    <td>{$data.permission}</td>
+                  <tr>
+                    <td><a href="#">{$data.username} ({$data.name})</a> </td>
                     <td class="text-center" id="stt{$data.id}">
                       {$data.status}
                     </td>
                     <td class="text-right">
-                      {* <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#ContentModal" onclick="LoadDataContent({$data.id});"><i class="fa fa-warning"></i></button> *}
                       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#UpdateFrom" onclick="LoadDataForForm({$data.id});"><i class="fa fa-pencil"></i></button>
                       <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#DeleteForm" onclick="LoadDeleteItem('user', {$data.id}, '', 'nhân viên');"><i class="fa fa-trash-o"></i></button>
                     </td>
@@ -221,12 +197,6 @@ function activeUser(table, id) {
 }
 
 
-function LoadDataContent(id){
-  $.post("?mod=user&site=load_user_permission", {'id':id} )
-  .done(function(data){
-    $("#ContentModal .modal-body").html(data);
-  });
-}
 
 
 function LoadDataForForm(id) {
@@ -272,15 +242,7 @@ function LoadDataForForm(id) {
 
   });
 }
-function filter() {
-    var key = $("#key").val();
-    var permission = $("#permission").val();
 
-    var url = "./admin?mc=user&site=index";
-    url += "&permission=" + permission;
-    url += "&key=" + key;
-    window.location.href = url;
-}
 </script>
 {/literal}
 <script>

@@ -133,7 +133,25 @@ class Patient extends Main
     if( !is_dir(base_path($this->arg['video_path'] . "/" . $path_day_mon_year[2] . "/" . $path_day_mon_year[1]) . "/" . $path_day_mon_year[0]) )
       mkdir(base_path($this->arg['video_path'] . "/" . $path_day_mon_year[2] . "/" . $path_day_mon_year[1] . "/" . $path_day_mon_year[0] ), 0700);
 
-    move_uploaded_file($_FILES['video']['tmp_name'], $full_path);
+    // move_uploaded_file($_FILES['video']['tmp_name'], $full_path);
+    if($extension == 'mpg')
+    {
+      // tạo folder temp
+      if(!is_dir(base_path($this->arg['video_path'] . "/" . "temp")))
+        mkdir(base_path($this->arg['video_path'] . "/" . "temp"), 0700);
+      $temp_path = base_path($this->arg['video_path'] . "/" . "temp" . '/' . $videoName);
+      move_uploaded_file($_FILES['video']['tmp_name'], $temp_path);
+      //convert
+      $videoName = $id . "_" . $patient_count . "_" . $videoNameDate . "." . "mp4";
+      $full_path =  base_path($this->arg['video_path'] . "/" . $path_day_mon_year[2] . "/" . $path_day_mon_year[1] . "/" . $path_day_mon_year[0]) . "/" . $videoName;
+      $cmd = "/usr/local/bin/HandBrakeCLI -i " . $temp_path . " -o " . $full_path;
+      exec($cmd);
+      unlink($temp_path);
+    }
+    else
+    {
+      move_uploaded_file($_FILES['video']['tmp_name'], $full_path);
+    }
     // thêm vào bảng media
     $data['name'] = $videoName;
     $data['path'] = $this->arg['video_path'] . "/" . $path_day_mon_year[2] . "/" . $path_day_mon_year[1] . "/" . $path_day_mon_year[0];

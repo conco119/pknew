@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-05 12:57:26
+/* Smarty version 3.1.30, created on 2018-08-11 12:18:50
   from "/Users/mtd/Sites/pknew/app/admin/view/patient/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b6691c62867b3_16598871',
+  'unifunc' => 'content_5b6e71ba750547_90147906',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5f38a4fd46a73b9d3932e606c206757943ea0bc0' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/admin/view/patient/index.tpl',
-      1 => 1533448643,
+      1 => 1533964725,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b6691c62867b3_16598871 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b6e71ba750547_90147906 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
   <div class="row">
@@ -91,6 +91,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['data']->value) {
                     <td class="text-right">
                       <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#VideoModal" onclick='modal_video_click(<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
 )' ><i class="fa fa-camera"></i></button>
+                      
                       <a type="button" class="btn btn-primary btn-xs" href='./admin?mc=patient&site=detail&id=<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
 '><i class="fa fa-info"></i></a>
                       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#EditForm" onclick="LoadEditData(<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
@@ -126,7 +127,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Xóa mục này</h4>
       </div>
-      <div class="modal-body">Bạn chắc chắn muốn xóa mục này chứ?</div>
+      <div class="modal-body">Bạn chắc chắn muốn xóa bệnh nhân này chứ?</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
         <a type="button" class="btn btn-danger" id="DeleteItem">Xóa</a>
@@ -416,6 +417,7 @@ function filter()
     var key = $("#key").val();
     var day = $("#day").val();
     var url = "./admin?mc=patient";
+    // var url = "./admin/benh-nhan/?";
     url += "&key=" + key;
     url += "&day=" + day;
     window.location.href = url;

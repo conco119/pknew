@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-02 09:18:13
+/* Smarty version 3.1.30, created on 2018-08-11 12:30:14
   from "/Users/mtd/Sites/pknew/app/admin/view/contact/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b6269e530be06_94326087',
+  'unifunc' => 'content_5b6e74660df631_91201931',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd7caf6b0e0426f21537ea3df16afc5fa047d22b0' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/admin/view/contact/index.tpl',
-      1 => 1529388518,
+      1 => 1533965412,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b6269e530be06_94326087 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b6e74660df631_91201931 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
     <div class="x_panel">
@@ -71,8 +71,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['list']->value) {
 
                                 </td>
                                 <td class="text-center" id="stt<?php echo $_smarty_tpl->tpl_vars['list']->value['id'];?>
-"><?php echo $_smarty_tpl->tpl_vars['list']->value['status'];?>
-</td>
+">
+                                <?php if ($_smarty_tpl->tpl_vars['list']->value['status'] == 0) {?>
+                                <a href='./admin?mc=contact&site=active&id=<?php echo $_smarty_tpl->tpl_vars['list']->value['id'];?>
+' ype="button" class="btn order-status btn-danger btn-xs order-status" >Chờ</a>
+                                <?php } else { ?>
+                                <a href='./admin?mc=contact&site=active&id=<?php echo $_smarty_tpl->tpl_vars['list']->value['id'];?>
+' type="button" class="btn order-status btn-success btn-xs order-status"> Đã Duyệt</a>
+                                <?php }?>
+                                </td>
                                 <td class="text-center">
                                     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#orderDetail" onclick="GetDetailContact(<?php echo $_smarty_tpl->tpl_vars['list']->value['id'];?>
 );"><i class="fa fa-search-plus"></i></button>

@@ -22,7 +22,7 @@
 						<thead>
 							<tr>
 								<th style="width: 25%">Danh mục</th>
-								<th class="text-center">Trạng thái</th>
+								{* <th class="text-center">Trạng thái</th> *}
 								<th style="width: 20%" class="text-right"></th>
 							</tr>
 						</thead>
@@ -32,13 +32,13 @@
 								<td>
 								<ol class="breadcrumb">{$data.name}</ol>
 								</td>
-								<td class="text-center">
+								{* <td class="text-center">
 	                                {if $data.status eq 1}
                                         <a href='./admin?mc=category&site=active_status&id={$data.id}' type="button" class="btn btn-success btn-xs btn-status"><i class="fa fa-check"></i></a>
                                     {else}
                                         <a href='./admin?mc=category&site=active_status&id={$data.id}' type="button" class="btn btn-danger btn-xs btn-status"><i class="fa fa-close"></i></a>
                                     {/if}
-								</td>
+								</td> *}
 								<td class="text-right">
 									<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#EditForm" onclick="LoadDataForForm({$data.id});"><i class="fa fa-pencil"></i></button>
 									<button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#DeleteForm" onclick="ConfirmDelete({$data.id});"><i class="fa fa-trash-o"></i></button>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-05 16:07:21
+/* Smarty version 3.1.30, created on 2018-08-12 11:28:05
   from "/Users/mtd/Sites/pknew/app/admin/view/patient/detail.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b66be49cfee39_74554845',
+  'unifunc' => 'content_5b6fb75550ba54_51229365',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '484c52dbc1d9c77a7ccea57d8a409a3de350e395' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/admin/view/patient/detail.tpl',
-      1 => 1533460037,
+      1 => 1534048082,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b66be49cfee39_74554845 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b6fb75550ba54_51229365 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
     <div class="row">
@@ -35,7 +35,8 @@ function content_5b66be49cfee39_74554845 (Smarty_Internal_Template $_smarty_tpl)
             </div>
             <div class="x_content">
                 <div class="h_content">
-                    <a href="./admin?mc=patient" class="btn btn-primary left"><i
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['arg']->value['prefix_admin'];?>
+mc=patient" class="btn btn-primary left"><i
                                 class="fa fa-arrow-left"></i> Quản lý bệnh nhân</a>
                     <div class="clearfix"></div>
                 </div>

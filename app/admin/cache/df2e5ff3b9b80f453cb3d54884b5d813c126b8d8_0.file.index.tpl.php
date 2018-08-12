@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-06 00:14:58
+/* Smarty version 3.1.30, created on 2018-08-12 12:58:35
   from "/Users/mtd/Sites/pknew/app/admin/view/category/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b6730925acb78_89987994',
+  'unifunc' => 'content_5b6fcc8b4fdd85_81690638',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'df2e5ff3b9b80f453cb3d54884b5d813c126b8d8' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/admin/view/category/index.tpl',
-      1 => 1533489297,
+      1 => 1534053513,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b6730925acb78_89987994 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b6fcc8b4fdd85_81690638 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
 	<div class="row">
@@ -46,7 +46,7 @@ function content_5b6730925acb78_89987994 (Smarty_Internal_Template $_smarty_tpl)
 						<thead>
 							<tr>
 								<th style="width: 25%">Danh mục</th>
-								<th class="text-center">Trạng thái</th>
+								
 								<th style="width: 20%" class="text-right"></th>
 							</tr>
 						</thead>
@@ -61,15 +61,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['data']->value) {
 								<ol class="breadcrumb"><?php echo $_smarty_tpl->tpl_vars['data']->value['name'];?>
 </ol>
 								</td>
-								<td class="text-center">
-	                                <?php if ($_smarty_tpl->tpl_vars['data']->value['status'] == 1) {?>
-                                        <a href='./admin?mc=category&site=active_status&id=<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
-' type="button" class="btn btn-success btn-xs btn-status"><i class="fa fa-check"></i></a>
-                                    <?php } else { ?>
-                                        <a href='./admin?mc=category&site=active_status&id=<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
-' type="button" class="btn btn-danger btn-xs btn-status"><i class="fa fa-close"></i></a>
-                                    <?php }?>
-								</td>
+								
 								<td class="text-right">
 									<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#EditForm" onclick="LoadDataForForm(<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
 );"><i class="fa fa-pencil"></i></button>

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-06 16:41:30
+/* Smarty version 3.1.30, created on 2018-08-07 19:49:41
   from "/Users/mtd/Sites/pknew/app/admin/view/layouts/login.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b6817ca439177_42471139',
+  'unifunc' => 'content_5b6995653555e8_85453010',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b6817ca439177_42471139 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b6995653555e8_85453010 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
