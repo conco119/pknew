@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-08-12 12:57:11
+/* Smarty version 3.1.30, created on 2018-08-13 12:42:08
   from "/Users/mtd/Sites/pknew/app/site/view/layouts/includes/nav_2.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b6fcc370dd8c4_73695613',
+  'unifunc' => 'content_5b711a30c34c05_75161446',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '062af64e165c011770c04a68c1529b6f5a81fc6b' => 
     array (
       0 => '/Users/mtd/Sites/pknew/app/site/view/layouts/includes/nav_2.tpl',
-      1 => 1534053428,
+      1 => 1534138926,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b6fcc370dd8c4_73695613 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b711a30c34c05_75161446 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!--banner-->
 <section id="banner" class="banner">
@@ -44,7 +44,7 @@ img/logo.png" class="img-responsive"
                             <li class="" ><a href="#service">Dịch vụ</a></li>
                             <li class=""><a href="#about">Về chúng tôi</a></li>
                             <li class="" id='contact-menu'><a href="./?mc=contact">Liên hệ</a></li>
-                            <li class=""><a href="#contact">Tin tức</a></li>
+                            <li class="" id='tintuc-menu'><a href="./?mc=post">Tin tức</a></li>
                             <li class=""><a href="#contact">Lịch làm việc bác sĩ</a></li>
                             <?php if ($_smarty_tpl->tpl_vars['currentUser']->value['id'] != 0) {?>
                                 <li class="" id='video-menu'><a href="./?mc=user&site=detail&id=<?php echo $_smarty_tpl->tpl_vars['currentUser']->value['id'];?>

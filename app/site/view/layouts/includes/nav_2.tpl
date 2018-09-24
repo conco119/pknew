@@ -15,17 +15,17 @@
                     </div>
                     <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="./">Trang chủ</a></li>
-                            <li class="" ><a href="#service">Dịch vụ</a></li>
-                            <li class=""><a href="#about">Về chúng tôi</a></li>
-                            <li class="" id='contact-menu'><a href="./?mc=contact">Liên hệ</a></li>
-                            <li class=""><a href="#contact">Tin tức</a></li>
-                            <li class=""><a href="#contact">Lịch làm việc bác sĩ</a></li>
+                            <li class="active"><a href="/">Trang chủ</a></li>
+                            <li class="" ><a href="/">Dịch vụ</a></li>
+                            <li id='aboutus'><a href="/ve-chung-toi">Về chúng tôi</a></li>
+                            <li class="" id='contact-menu'><a href="/lien-he">Liên hệ</a></li>
+                            <li class="" id='tintuc-menu'><a href="/tin-tuc">Tin tức</a></li>
+                            <li id='calender'><a href="/lich-lam-viec">Lịch làm việc bác sĩ</a></li>
                             {if $currentUser.id neq 0 }
-                                <li class="" id='video-menu'><a href="./?mc=user&site=detail&id={$currentUser.id}">Video bệnh nhân</a></li>
-                                <li class=""><a href="./?mc=user&site=logout">Đăng xuất</a></li>
+                                <li class="" id='video-menu'><a href="/?mc=user&site=detail&id={$currentUser.id}">Video bệnh nhân</a></li>
+                                <li class=""><a href="/?mc=user&site=logout">Đăng xuất</a></li>
                              {else}
-                                <li class="" id='login-menu' ><a href="./?mc=user&site=get_login">Đăng nhập</a></li>
+                                <li class="" id='login-menu' ><a href="/dang-nhap">Đăng nhập</a></li>
                             {/if}
                         </ul>
                     </div>

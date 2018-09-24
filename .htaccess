@@ -8,6 +8,12 @@ RewriteEngine on
 
 
 RewriteRule ^admin app/admin/index.php [NC]
+RewriteRule ^bai-viet/(.+) app/site/index.php?mc=post&site=detail&slug=$1 [NC]
+RewriteRule ^ve-chung-toi app/site/index.php?mc=home&site=about [NC]
+RewriteRule ^lien-he app/site/index.php?mc=contact&site=index [NC]
+RewriteRule ^tin-tuc app/site/index.php?mc=post&site=index [NC]
+RewriteRule ^lich-lam-viec app/site/index.php?mc=calender&site=index [NC]
+RewriteRule ^dang-nhap app/site/index.php?mc=user&site=get_login [NC]
 RewriteRule ^index.php app/site/index.php [NC]
 #RewriteRule ^index.php app/site/index.php [NC]
 #RewriteRule ^search app/site/index.php?mc=product&site=search [NC]

@@ -1,14 +1,15 @@
 <?php
 
-class Home extends Main {
+class Home extends Main
+{
 
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->HomeHelper = new HomeHelper();
     }
 
-    function index()
+    public function index()
     {
         $sql = "SELECT p.*, m.path, m.name FROM posts p
                 LEFT JOIN media_post mp ON mp.post_id = p.id
@@ -22,15 +23,14 @@ class Home extends Main {
         $this->smarty->display('home.tpl');
     }
 
-    function payment()
+    public function payment()
     {
         $this->smarty->display('home.tpl');
     }
 
-    function contact()
+    public function contact()
     {
-        if(isset($_POST['submit']))
-        {
+        if (isset($_POST['submit'])) {
             $data['name'] = $_POST['name'];
             $data['email'] = $_POST['email'];
             $data['phone'] = $_POST['phone'];
@@ -43,10 +43,14 @@ class Home extends Main {
         $this->smarty->display('contact.tpl');
     }
 
-    function intro()
+    public function intro()
     {
         $this->smarty->display('home.tpl');
     }
 
+    public function about()
+    {
+        $this->smarty->display('home.tpl');
+    }
 
 }

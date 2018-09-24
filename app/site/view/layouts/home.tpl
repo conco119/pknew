@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Medilab Free Bootstrap HTML5 Template</title>
+  <title>Phòng khám</title>
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
@@ -12,6 +12,14 @@
   <link rel="stylesheet" type="text/css" href="{$arg.stylesheet}css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="{$arg.stylesheet}css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="{$arg.stylesheet}css/style.css">
+  <script src="{$arg.stylesheet}js/jquery.min.js"></script>
+  <script src="{$arg.stylesheet}js/jquery.easing.min.js"></script>
+  <script src="{$arg.stylesheet}js/bootstrap.min.js"></script>
+  <script src="{$arg.stylesheet}js/custom.js"></script>
+  {* <script src="{$arg.stylesheet}contactform/contactform.js"></script> *}
+  <style>
+
+  </style>
   <!-- =======================================================
     Theme Name: Medilab
     Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
@@ -21,12 +29,7 @@
 </head>
     <body>
         {include file="includes/nav.tpl"}
-	    {include file=$tpl_file}
+        {include file=$tpl_file}
         {include file="includes/footer.tpl"}
-        <script src="{$arg.stylesheet}js/jquery.min.js"></script>
-        <script src="{$arg.stylesheet}js/jquery.easing.min.js"></script>
-        <script src="{$arg.stylesheet}js/bootstrap.min.js"></script>
-        <script src="{$arg.stylesheet}js/custom.js"></script>
-        <script src="{$arg.stylesheet}contactform/contactform.js"></script>
     </body>
 </html>

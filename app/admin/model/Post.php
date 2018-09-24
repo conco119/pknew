@@ -2,7 +2,7 @@
 
 class Post extends Main
 {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->PostHelper = new PostHelper();
@@ -27,11 +27,10 @@ class Post extends Main
         $paging = $this->paging->get_content($this->pdo->count_rows($sql), 20);
         $sql .= $paging['sql_add'];
         $posts = $this->pdo->fetch_all($sql);
-        foreach ($posts as $key => $value)
-        {
-            $sql ="SELECT m.path, m.name FROM media_post mp LEFT JOIN media m ON m.id = mp.media_id   WHERE mp.post_id = {$value['id']} AND mp.is_showed = 1";
+        foreach ($posts as $key => $value) {
+            $sql = "SELECT m.path, m.name FROM media_post mp LEFT JOIN media m ON m.id = mp.media_id   WHERE mp.post_id = {$value['id']} AND mp.is_showed = 1";
             $posts[$key]['media'] = $this->pdo->fetch_one($sql);
-            $posts[$key]['category'] =  $this->pdo->fetch_one("SELECT * FROM categories WHERE id = {$value['category_id']}");
+            $posts[$key]['category'] = $this->pdo->fetch_one("SELECT * FROM categories WHERE id = {$value['category_id']}");
         }
         $categories = $this->pdo->fetch_all("SELECT * FROM categories");
         //smarty
@@ -45,8 +44,7 @@ class Post extends Main
 
     public function create()
     {
-        if( isset($_POST['submit']) && $_POST['id'] == 0 )
-        {
+        if (isset($_POST['submit']) && $_POST['id'] == 0) {
             $data['name'] = $_POST['name'];
             $data['code'] = $_POST['code'];
             $data['category_id'] = $_POST['category_id'];
@@ -65,32 +63,28 @@ class Post extends Main
             $data['created_at'] = time();
             $data['updated_at'] = time();
             $isSucceed = $this->pdo->insert($this->table, $data);
-            if($isSucceed)
-                {
-                    $notification = [
-                        'status' => 'success',
-                        'title'  => 'Thêm thành công',
-                        'text'   => "Thêm sản phẩm thành công"
-                    ];
-                    $this->smarty->assign('notification', $notification );
-                }
-            else
-                {
-                    $notification = [
-                        'status' => 'error',
-                        'title'  => 'Thêm không thành công',
-                        'text'   => "Thêm sản phẩm không thành công"
-                    ];
-                    $this->smarty->assign('notification', $notification);
-                }
+            if ($isSucceed) {
+                $notification = [
+                    'status' => 'success',
+                    'title' => 'Thêm thành công',
+                    'text' => "Thêm sản phẩm thành công",
+                ];
+                $this->smarty->assign('notification', $notification);
+            } else {
+                $notification = [
+                    'status' => 'error',
+                    'title' => 'Thêm không thành công',
+                    'text' => "Thêm sản phẩm không thành công",
+                ];
+                $this->smarty->assign('notification', $notification);
+            }
 
         }
     }
     public function edit()
     {
 
-        if( isset($_POST['submit']) && $_POST['id'] != 0)
-        {
+        if (isset($_POST['submit']) && $_POST['id'] != 0) {
             // pre($_POST);
             // die();
             $data['name'] = $_POST['name'];
@@ -111,31 +105,27 @@ class Post extends Main
             $data['updated_at'] = time();
             $post['slug'] = $this->dstring->str_convert($data['name'] . $data['code']);
             $post['title'] = $data['name'];
-            $this->pdo->update("posts", $post, "product_id=".$_POST['id']);
+            $this->pdo->update("posts", $post, "product_id=" . $_POST['id']);
             try {
                 $updateStatement = $this->slim_pdo->update($data)->table($this->table)->where('id', '=', $_POST['id']);
                 $isSucceed = $updateStatement->execute();
-            }
-            catch(PDOException $e) {
+            } catch (PDOException $e) {
                 $text = $e->getMessage();
                 $isSucceed = false;
             }
 
-            if($isSucceed)
-            {
+            if ($isSucceed) {
                 $notification = [
                     'status' => 'success',
-                    'title'  => 'Sửa thành công',
-                    'text'   => "Sửa sản phẩm thành công"
+                    'title' => 'Sửa thành công',
+                    'text' => "Sửa sản phẩm thành công",
                 ];
-                $this->smarty->assign('notification', $notification );
-            }
-          else
-            {
+                $this->smarty->assign('notification', $notification);
+            } else {
                 $notification = [
                     'status' => 'error',
-                    'title'  => 'Sửa không thành công',
-                    'text'   => $text
+                    'title' => 'Sửa không thành công',
+                    'text' => $text,
                 ];
                 $this->smarty->assign('notification', $notification);
             }
@@ -145,17 +135,16 @@ class Post extends Main
     {
         $item = $this->pdo->fetch_one("SELECT status FROM " . $this->table . " WHERE id=" . $_GET['id']);
         $status = $item['status'] == 1 ? 0 : 1;
-        $this->pdo->query("UPDATE " . $this->table. " SET status = '$status' WHERE id=" . $_GET['id']);
+        $this->pdo->query("UPDATE " . $this->table . " SET status = '$status' WHERE id=" . $_GET['id']);
         lib_redirect_back();
     }
 
     public function ajax_load()
     {
-        if( isset($_POST['id']) )
-        {
-          $item = $this->pdo->fetch_one("SELECT * FROM {$this->table} WHERE id = " . $_POST['id']);
-          $item['category'] = $this->PostHelper->get_category_option($_POST['category_id']);
-          echo json_encode($item);
+        if (isset($_POST['id'])) {
+            $item = $this->pdo->fetch_one("SELECT * FROM {$this->table} WHERE id = " . $_POST['id']);
+            $item['category'] = $this->PostHelper->get_category_option($_POST['category_id']);
+            echo json_encode($item);
         }
         $this->pdo->close();
         exit();
@@ -166,10 +155,9 @@ class Post extends Main
         $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
         $media_post = $this->pdo->fetch_all("SELECT * FROM media_post WHERE post_id=$id");
-        foreach ($media_post as $key => $value)
-        {
+        foreach ($media_post as $key => $value) {
             $media = $this->pdo->fetch_one("SELECT * FROM media WHERE id = {$value['media_id']}");
-            unlink(base_path($media['path']) . "/" . $media['name'] );
+            unlink(base_path($media['path']) . "/" . $media['name']);
             $this->pdo->query("DELETE FROM media WHERE id={$value['media_id']}");
             $this->pdo->query("DELETE FROM media_post WHERE id={$value['id']}");
         }
@@ -177,15 +165,12 @@ class Post extends Main
         lib_redirect_back();
     }
 
-
-
-    function imagepost()
+    public function imagepost()
     {
         $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
         $post = $this->pdo->fetch_one("SELECT * FROM posts WHERE id = $id");
         $media_post = $this->pdo->fetch_all("SELECT * FROM media_post WHERE post_id = $id");
-        foreach ($media_post as $key => $value)
-        {
+        foreach ($media_post as $key => $value) {
             $media_post[$key]['media'] = $this->pdo->fetch_one("SELECT * FROM media WHERE id = {$value['media_id']}");
         }
         //post
@@ -201,7 +186,8 @@ class Post extends Main
         $data['category_id'] = $_POST['category_id'];
         $data['title'] = $_POST['title'];
         $data['content'] = "";
-        $data['slug'] = $this->dstring->str_convert($_POST['title'] . "-" .time());
+        $data['is_hot'] = 0;
+        $data['slug'] = $this->dstring->str_convert($_POST['title'] . "-" . time());
         $data['status'] = 1;
         $data['created_at'] = time();
         $this->pdo->insert('posts', $data);
@@ -212,7 +198,7 @@ class Post extends Main
     {
         $data['category_id'] = $_POST['category_id'];
         $data['title'] = $_POST['title'];
-        $data['slug'] = $this->dstring->str_convert($_POST['title'] . "-" .time());
+        $data['slug'] = $this->dstring->str_convert($_POST['title'] . "-" . time());
         $data['updated_at'] = time();
         $this->pdo->update('posts', $data, "id=" . $_POST['id']);
         lib_redirect_back();
@@ -220,44 +206,38 @@ class Post extends Main
 
     public function add_image()
     {
-      if(isset($_POST['avatar_change']))
-      {
+        if (isset($_POST['avatar_change'])) {
 
-        $data = array();
-        $avatar = new Zebra();
-        if ( !isset($_FILES['avatar_file']) && !$this->helper->check_type($_FILES['avatar_file']['type']) )
-        {
-            $this->helper->create_notification(0, "Thêm ảnh không thành công");
-        }
+            $data = array();
+            $avatar = new Zebra();
+            if (!isset($_FILES['avatar_file']) && !$this->helper->check_type($_FILES['avatar_file']['type'])) {
+                $this->helper->create_notification(0, "Thêm ảnh không thành công");
+            }
 
-          $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-          $post = $this->pdo->fetch_one("SELECT * FROM posts WHERE id= $id");
-          $avatar->source_path = $_FILES['avatar_file']['tmp_name'];
-          $upload_file_name = $this->PostHelper->get_image_name_upload_from_dollar_files($post['id'], $_FILES['avatar_file']['type']);
-          $avatar->target_path = base_path($this->arg['post_path']) . "/" . $upload_file_name;
-          $avatar->jpeg_quality = 100;
-          $avatar->preserve_aspect_ratio = true;
-          if($_FILES['avatar_file']['type'] == "image/gif")
-          {
-            move_uploaded_file($_FILES['avatar_file']['tmp_name'], $avatar->target_path);
-          }
+            $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+            $post = $this->pdo->fetch_one("SELECT * FROM posts WHERE id= $id");
+            $avatar->source_path = $_FILES['avatar_file']['tmp_name'];
+            $upload_file_name = $this->PostHelper->get_image_name_upload_from_dollar_files($post['id'], $_FILES['avatar_file']['type']);
+            $avatar->target_path = base_path($this->arg['post_path']) . "/" . $upload_file_name;
+            $avatar->jpeg_quality = 100;
+            $avatar->preserve_aspect_ratio = true;
+            if ($_FILES['avatar_file']['type'] == "image/gif") {
+                move_uploaded_file($_FILES['avatar_file']['tmp_name'], $avatar->target_path);
+            } else {
+                move_uploaded_file($_FILES['avatar_file']['tmp_name'], $avatar->target_path);
+            }
 
-          else
-          {
-            move_uploaded_file($_FILES['avatar_file']['tmp_name'], $avatar->target_path);
-          }
-
-          $data['name'] = $upload_file_name;
-          $data['path'] = $this->arg['post_path'];
-          $data['is_slider'] = 0;
-          $data['is_video'] = 0;
-          $media_id = $this->pdo->insert('media', $data);
-          unset($data);
-          $data['post_id'] = $id;
-          $data['media_id'] = $media_id;
-          $data['is_showed'] = 0;
-          $this->pdo->insert('media_post', $data);
-          lib_redirect_back();
+            $data['name'] = $upload_file_name;
+            $data['path'] = $this->arg['post_path'];
+            $data['is_slider'] = 0;
+            $data['is_video'] = 0;
+            $media_id = $this->pdo->insert('media', $data);
+            unset($data);
+            $data['post_id'] = $id;
+            $data['media_id'] = $media_id;
+            $data['is_showed'] = 0;
+            $this->pdo->insert('media_post', $data);
+            lib_redirect_back();
         }
     }
 
@@ -269,7 +249,7 @@ class Post extends Main
         $media = $this->pdo->fetch_one("SELECT * FROM media WHERE id=$media_id");
         $this->pdo->query("DELETE FROM media WHERE id=$media_id");
         $this->pdo->query("DELETE FROM media_post WHERE id=$id");
-        unlink(base_path($media['path']) . "/" . $media['name'] );
+        unlink(base_path($media['path']) . "/" . $media['name']);
         lib_redirect_back();
     }
 
@@ -285,7 +265,7 @@ class Post extends Main
         lib_redirect_back();
     }
 
-    function save_post()
+    public function save_post()
     {
         $id = $_POST['id'];
         $data['content'] = $_POST['content'];
@@ -293,11 +273,11 @@ class Post extends Main
         lib_redirect_back();
     }
 
-    function is_hot()
+    public function is_hot()
     {
         $item = $this->pdo->fetch_one("SELECT is_hot FROM " . $this->table . " WHERE id=" . $_GET['id']);
         $is_hot = $item['is_hot'] == 1 ? 0 : 1;
-        $this->pdo->query("UPDATE " . $this->table. " SET is_hot = '$is_hot' WHERE id=" . $_GET['id']);
+        $this->pdo->query("UPDATE " . $this->table . " SET is_hot = '$is_hot' WHERE id=" . $_GET['id']);
         lib_redirect_back();
     }
 }

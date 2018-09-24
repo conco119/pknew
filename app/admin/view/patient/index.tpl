@@ -387,6 +387,12 @@ $(document).ready(function(){
     // });
 })
 
+$('#key').keypress(function( event ){
+      if ( event.which == 13 ) {
+         $('#search_btn').trigger('click');
+      }
+});
+
 </script>
 {/literal}
 

@@ -11,7 +11,7 @@
             <div class="space"></div>
             <div id="sendmessage">Your message has been sent. Thank you!</div>
             <div id="errormessage"></div>
-            <form action="./?mc=contact&site=create" method="post" role="form">
+            <form action="/?mc=contact&site=create" method="post" role="form">
               <div class="form-group">
                 <label> Tên của bạn </label>
                 <input type="text" name="name" class="form-control br-radius-zero" id="name" placeholder="Tên của bạn" required/>
